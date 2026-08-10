@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI & Agentic AI Engineer portfolio — intelligent systems, AI agents, RAG, LLM applications and automation.">
+  <title>AI & Agentic AI Engineer | Portfolio</title>
+  <style>
+    :root{
+      --green:#D8FFC5;
+      --green2:#C4F7CA;
+      --bg:#080d0a;
+      --bg2:#0d1710;
+      --card:rgba(216,255,197,.055);
+      --line:rgba(216,255,197,.15);
+      --text:#f5faf4;
+      --muted:#aab7ad;
+      --darkgreen:#102a18;
+      --max:1180px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 80% 10%,rgba(196,247,202,.10),transparent 28%),
+        radial-gradient(circle at 10% 35%,rgba(216,255,197,.06),transparent 25%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{width:min(92%,var(--max));margin:auto}
+    .nav{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      backdrop-filter:blur(18px);
+      background:rgba(8,13,10,.72);
+      border-bottom:1px solid rgba(216,255,197,.08);
+    }
+    .nav-inner{height:74px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-size:1.25rem;font-weight:900;letter-spacing:-.05em;color:var(--green)}
+    .logo span{color:#fff}
+    .nav-links{display:flex;gap:25px;font-size:.88rem;color:#c8d2ca}
+    .nav-links a{transition:.25s}
+    .nav-links a:hover{color:var(--green)}
+    .menu{display:none;background:none;border:1px solid var(--line);color:var(--green);padding:8px 11px;border-radius:10px}
+    section{padding:105px 0}
+    .hero{min-height:100vh;display:grid;align-items:center;padding-top:130px}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:65px;align-items:center}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:9px;padding:8px 13px;
+      border:1px solid var(--line);border-radius:999px;background:rgba(216,255,197,.04);
+      color:var(--green);font-size:.74rem;font-weight:800;letter-spacing:.14em
+    }
+    .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 16px var(--green)}
+    h1{font-size:clamp(3rem,6.5vw,6rem);line-height:.95;letter-spacing:-.075em;margin:25px 0}
+    .gradient{color:var(--green);text-shadow:0 0 35px rgba(216,255,197,.16)}
+    .hero p{max-width:650px;color:var(--muted);font-size:1.08rem}
+    .actions{display:flex;gap:14px;margin:32px 0 22px;flex-wrap:wrap}
+    .btn{padding:13px 20px;border-radius:12px;font-weight:800;border:1px solid var(--line);transition:.25s}
+    .btn-primary{background:linear-gradient(135deg,var(--green),var(--green2));color:#0a130c;box-shadow:0 12px 35px rgba(216,255,197,.12)}
+    .btn-secondary{background:rgba(216,255,197,.035)}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(216,255,197,.12)}
+    .availability{color:#9dac9f;font-size:.82rem}.availability b{color:var(--green)}
+    .visual{position:relative;height:520px;display:grid;place-items:center}
+    .orb{
+      width:330px;height:330px;border-radius:50%;
+      border:1px solid rgba(216,255,197,.22);
+      background:radial-gradient(circle at 45% 40%,rgba(216,255,197,.18),rgba(16,42,24,.2) 45%,transparent 70%);
+      box-shadow:0 0 100px rgba(216,255,197,.08),inset 0 0 80px rgba(196,247,202,.06);
+      position:relative;animation:float 5s ease-in-out infinite;
+    }
+    .orb:before,.orb:after{content:"";position:absolute;inset:-45px;border:1px dashed rgba(216,255,197,.15);border-radius:50%;animation:spin 18s linear infinite}
+    .orb:after{inset:45px;animation-direction:reverse;animation-duration:12s}
+    .core{position:absolute;inset:35%;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--green2));box-shadow:0 0 60px rgba(216,255,197,.55)}
+    .node{position:absolute;width:13px;height:13px;border-radius:50%;background:var(--green);box-shadow:0 0 20px var(--green)}
+    .n1{top:10%;left:25%}.n2{right:7%;top:35%}.n3{bottom:10%;left:30%}.n4{left:7%;top:55%}
+    .tag{position:absolute;padding:10px 13px;border:1px solid var(--line);background:rgba(8,13,10,.72);backdrop-filter:blur(12px);border-radius:10px;color:var(--green);font-size:.76rem;font-weight:700}
+    .t1{top:10%;right:0}.t2{bottom:16%;right:3%}.t3{top:43%;left:0}
+    @keyframes float{50%{transform:translateY(-14px)}} @keyframes spin{to{transform:rotate(360deg)}}
+    .section-head{margin-bottom:45px}.kicker{color:var(--green);font-size:.75rem;font-weight:900;letter-spacing:.16em}
+    h2{font-size:clamp(2.2rem,4vw,4rem);line-height:1;letter-spacing:-.055em;margin-top:12px}
+    .section-head p{color:var(--muted);max-width:700px;margin-top:15px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      border:1px solid var(--line);background:linear-gradient(145deg,rgba(216,255,197,.06),rgba(216,255,197,.015));
+      border-radius:18px;padding:25px;transition:.3s;position:relative;overflow:hidden
+    }
+    .card:after{content:"";position:absolute;width:100px;height:100px;right:-40px;top:-40px;border-radius:50%;background:rgba(216,255,197,.08);filter:blur(10px)}
+    .card:hover{transform:translateY(-6px);border-color:rgba(216,255,197,.32);box-shadow:0 20px 50px rgba(0,0,0,.22)}
+    .icon{font-size:1.7rem;margin-bottom:18px}.card h3{margin-bottom:8px}.card p{color:var(--muted);font-size:.93rem}
+    .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .skill-card h3{color:var(--green);margin-bottom:15px}
+    .pills{display:flex;flex-wrap:wrap;gap:8px}.pill{border:1px solid var(--line);padding:7px 10px;border-radius:9px;color:#d9e4db;font-size:.78rem;background:rgba(216,255,197,.025)}
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .project{min-height:300px;display:flex;flex-direction:column;justify-content:space-between}
+    .project-number{color:var(--green);font-weight:900;font-size:.78rem}.project h3{font-size:1.6rem;margin:12px 0}.project p{margin-bottom:20px}
+    .project-bottom{display:flex;justify-content:space-between;gap:15px;align-items:center}.tech{font-size:.72rem;color:#9eafa2}
+    .architecture{padding:40px 20px;border:1px solid var(--line);border-radius:22px;background:rgba(216,255,197,.025);overflow:auto}
+    .flow{display:flex;align-items:center;justify-content:center;gap:12px;min-width:850px}
+    .flow-box{padding:17px 22px;border:1px solid rgba(216,255,197,.25);border-radius:13px;color:var(--green);font-weight:800;background:rgba(216,255,197,.04);text-align:center}
+    .arrow{color:var(--green);font-size:1.4rem}
+    .timeline{max-width:850px;margin:auto;position:relative}
+    .timeline:before{content:"";position:absolute;left:15px;top:0;bottom:0;width:1px;background:var(--line)}
+    .step{position:relative;padding:0 0 35px 55px}.step:before{content:"";position:absolute;left:9px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--green);box-shadow:0 0 18px rgba(216,255,197,.5)}
+    .step span{color:var(--green);font-size:.75rem;font-weight:900}.step h3{margin:4px 0}.step p{color:var(--muted)}
+    .cta{text-align:center;border:1px solid var(--line);border-radius:25px;padding:70px 25px;background:radial-gradient(circle at center,rgba(216,255,197,.09),transparent 55%)}
+    .cta p{max-width:650px;margin:15px auto 28px;color:var(--muted)}
+    footer{padding:30px 0;border-top:1px solid rgba(216,255,197,.08);color:#7f8d82;font-size:.8rem}
+    .footer-inner{display:flex;justify-content:space-between;gap:15px}
+    .reveal{opacity:0;transform:translateY(25px);transition:opacity .7s,transform .7s}.reveal.show{opacity:1;transform:none}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr}.visual{height:430px}.cards{grid-template-columns:1fr 1fr}.projects{grid-template-columns:1fr}.nav-links{display:none}.menu{display:block}}
+    @media(max-width:600px){section{padding:75px 0}.cards,.skills{grid-template-columns:1fr}.hero{padding-top:105px}.visual{height:350px}.orb{width:245px;height:245px}.tag{font-size:.68rem}.t1{right:0}.t3{left:0}.footer-inner{flex-direction:column}h1{font-size:3.2rem}}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="#home">&lt;<span>AI</span>/&gt;</a>
+      <div class="nav-links">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
+        <a href="#agents">AI Agents</a><a href="#journey">Journey</a><a href="#contact">Contact</a>
+      </div>
+      <button class="menu" onclick="document.querySelector('.nav-links').classList.toggle('mobile')">☰</button>
+    </div>
+  </nav>
+
+  <main id="home">
+    <section class="hero container">
+      <div class="hero-grid">
+        <div class="reveal">
+          <div class="eyebrow"><i class="dot"></i> AI & AGENTIC AI ENGINEER</div>
+          <h1>Building Intelligent Systems That <span class="gradient">Think, Act & Automate.</span></h1>
+          <p>I design and build AI-powered applications, intelligent agents, LLM workflows, RAG systems and automation solutions that transform complex problems into scalable solutions.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#projects">View My Work</a>
+            <a class="btn btn-secondary" href="#contact">Let's Build Something</a>
+          </div>
+          <div class="availability">● <b>Available for AI Projects</b></div>
+        </div>
+        <div class="visual reveal">
+          <div class="orb"><div class="core"></div><i class="node n1"></i><i class="node n2"></i><i class="node n3"></i><i class="node n4"></i></div>
+          <div class="tag t1">LLM + RAG</div><div class="tag t2">AI AGENTS</div><div class="tag t3">AUTOMATION</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal"><div class="kicker">01 / ABOUT</div><h2>Engineering intelligence<br>for the real world.</h2><p>I combine analytical thinking, programming and modern AI technologies to create useful intelligent systems.</p></div>
+        <div class="cards">
+          <div class="card reveal"><div class="icon">🧠</div><h3>AI Engineering</h3><p>Building practical AI applications around LLMs, machine learning and intelligent automation.</p></div>
+          <div class="card reveal"><div class="icon">🤖</div><h3>Agentic AI</h3><p>Designing agents that can reason, use tools, access knowledge and take meaningful actions.</p></div>
+          <div class="card reveal"><div class="icon">⚡</div><h3>Automation</h3><p>Connecting applications, APIs and AI into reliable workflows that reduce repetitive work.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head reveal"><div class="kicker">02 / EXPERTISE</div><h2>AI skills & technologies.</h2></div>
+        <div class="skills">
+          <div class="card skill-card reveal"><h3>Artificial Intelligence</h3><div class="pills"><span class="pill">Machine Learning</span><span class="pill">Deep Learning</span><span class="pill">NLP</span><span class="pill">Computer Vision</span><span class="pill">Generative AI</span></div></div>
+          <div class="card skill-card reveal"><h3>Generative AI</h3><div class="pills"><span class="pill">LLMs</span><span class="pill">Prompt Engineering</span><span class="pill">RAG</span><span class="pill">Embeddings</span><span class="pill">Vector Databases</span></div></div>
+          <div class="card skill-card reveal"><h3>Agentic AI</h3><div class="pills"><span class="pill">AI Agents</span><span class="pill">Tool Calling</span><span class="pill">Memory</span><span class="pill">Planning</span><span class="pill">Multi-Agent Systems</span></div></div>
+          <div class="card skill-card reveal"><h3>Development & Automation</h3><div class="pills"><span class="pill">Python</span><span class="pill">JavaScript</span><span class="pill">n8n</span><span class="pill">Zapier</span><span class="pill">REST APIs</span><span class="pill">GitHub</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head reveal"><div class="kicker">03 / PROJECTS</div><h2>Things I build.</h2><p>Replace these examples with your real projects, GitHub links and demos.</p></div>
+        <div class="projects">
+          <article class="card project reveal"><div><div class="project-number">01</div><h3>AI Homework Evaluator</h3><p>An AI-powered system that evaluates student answers, provides feedback and generates intelligent recommendations.</p></div><div class="project-bottom"><span class="tech">Python · LLM · RAG · n8n</span><a class="btn btn-secondary" href="#" onclick="return false">GitHub ↗</a></div></article>
+          <article class="card project reveal"><div><div class="project-number">02</div><h3>Autonomous AI Research Agent</h3><p>An agent that researches topics, collects information, summarizes findings and generates structured reports.</p></div><div class="project-bottom"><span class="tech">Python · LLM · Agents · APIs</span><a class="btn btn-secondary" href="#" onclick="return false">Demo ↗</a></div></article>
+          <article class="card project reveal"><div><div class="project-number">03</div><h3>Intelligent Email Automation</h3><p>An AI workflow that categorizes incoming emails, drafts responses and routes important messages automatically.</p></div><div class="project-bottom"><span class="tech">Gmail · n8n · AI · Automation</span><a class="btn btn-secondary" href="#" onclick="return false">GitHub ↗</a></div></article>
+          <article class="card project reveal"><div><div class="project-number">04</div><h3>RAG Knowledge Assistant</h3><p>A conversational assistant that retrieves information from private documents and generates context-aware answers.</p></div><div class="project-bottom"><span class="tech">Python · RAG · Vector DB · LLM</span><a class="btn btn-secondary" href="#" onclick="return false">Demo ↗</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="agents">
+      <div class="container">
+        <div class="section-head reveal"><div class="kicker">04 / AGENTIC AI</div><h2>How my AI agents think.</h2><p>From user intent to intelligent action, an agent can connect reasoning, tools, memory and knowledge.</p></div>
+        <div class="architecture reveal">
+          <div class="flow">
+            <div class="flow-box">USER</div><div class="arrow">→</div><div class="flow-box">AI AGENT</div><div class="arrow">→</div><div class="flow-box">REASONING</div><div class="arrow">→</div><div class="flow-box">TOOLS</div><div class="arrow">→</div><div class="flow-box">MEMORY</div><div class="arrow">→</div><div class="flow-box">RAG</div><div class="arrow">→</div><div class="flow-box">ACTION</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="journey">
+      <div class="container">
+        <div class="section-head reveal"><div class="kicker">05 / JOURNEY</div><h2>From mathematics to AI engineering.</h2><p>A strong foundation in analytical thinking, logic and problem solving supports the way I approach AI systems.</p></div>
+        <div class="timeline">
+          <div class="step reveal"><span>01 — FOUNDATION</span><h3>Mathematics</h3><p>Analytical thinking, logical reasoning, mathematical modeling and problem solving.</p></div>
+          <div class="step reveal"><span>02 — DEVELOPMENT</span><h3>Programming</h3><p>Building practical software solutions and learning modern development tools.</p></div>
+          <div class="step reveal"><span>03 — INTELLIGENCE</span><h3>Artificial Intelligence</h3><p>Exploring machine learning, deep learning and data-driven systems.</p></div>
+          <div class="step reveal"><span>04 — GENERATIVE AI</span><h3>LLMs & RAG</h3><p>Building applications powered by large language models and private knowledge.</p></div>
+          <div class="step reveal"><span>05 — AGENTIC AI</span><h3>AI Agents & Automation</h3><p>Designing systems that reason, use tools, automate tasks and take action.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="cta reveal">
+          <div class="kicker">06 / CONTACT</div>
+          <h2>Have an AI idea?<br><span class="gradient">Let's build it.</span></h2>
+          <p>Whether you need an AI agent, intelligent automation workflow, RAG system or custom AI application, let's turn your idea into a working solution.</p>
+          <a class="btn btn-primary" href="mailto:your.email@example.com">Let's Talk ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 AI & Agentic AI Engineer</span>
+      <span>Built with intelligence · Designed for the future</span>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{if(entry.isIntersecting) entry.target.classList.add('show')});
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    document.querySelector('.menu').addEventListener('click',()=>{
+      const links=document.querySelector('.nav-links');
+      if(links.classList.contains('mobile')){
+        links.style.display='none';
+        links.classList.remove('mobile');
+      }else{
+        links.style.display='flex';
+        links.style.position='absolute';
+        links.style.top='74px';
+        links.style.left='0';
+        links.style.right='0';
+        links.style.padding='20px';
+        links.style.background='rgba(8,13,10,.96)';
+        links.style.flexDirection='column';
+        links.classList.add('mobile');
+      }
+    });
+  </script>
+</body>
+</html>
