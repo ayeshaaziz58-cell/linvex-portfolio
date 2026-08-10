@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI & Agentic AI Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg2:#f7f7fc;
+    --surface:#ffffff;
+    --surface2:#f5f4ff;
+    --violet:#6d28d9;
+    --indigo:#4338ca;
+    --cyan:#0891b2;
+    --teal:#f97316;
+    --text:#1a1a2e;
+    --muted:#64607d;
+    --border:#e5e2f5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
+  .bg-glow{
+    position:fixed; inset:0; z-index:-1; overflow:hidden;
+    background:
+      radial-gradient(circle at 15% 15%, rgba(109,40,217,0.08), transparent 40%),
+      radial-gradient(circle at 85% 10%, rgba(8,145,178,0.08), transparent 35%),
+      radial-gradient(circle at 60% 95%, rgba(249,115,22,0.07), transparent 45%),
+      linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+  }
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 6%;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+  }
+  .logo{font-weight:700; font-size:1.15rem; letter-spacing:0.5px;}
+  .logo span{color:var(--cyan);}
+  nav ul{display:flex; gap:28px; list-style:none;}
+  nav a{color:var(--muted); text-decoration:none; font-size:0.92rem; font-weight:500; transition:color .2s;}
+  nav a:hover{color:var(--cyan);}
+  section{padding:110px 8% 80px; max-width:1200px; margin:0 auto; position:relative;}
+  .hero{
+    min-height:100vh; display:flex; flex-direction:column; justify-content:center;
+    padding-top:80px;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    color:var(--cyan); font-size:0.85rem; font-weight:600;
+    letter-spacing:1.5px; text-transform:uppercase;
+    border:1px solid var(--border); border-radius:30px;
+    padding:6px 16px; margin-bottom:26px; width:fit-content;
+    background:rgba(8,145,178,0.07);
+  }
+  .dot{width:7px; height:7px; border-radius:50%; background:var(--cyan); box-shadow:0 0 10px var(--cyan);}
+  h1.hero-title{
+    font-size:clamp(2.6rem, 6vw, 4.6rem);
+    font-weight:700; line-height:1.08; letter-spacing:-1px;
+    max-width:900px;
+  }
+  .gradient-text{
+    background:linear-gradient(90deg, var(--violet), var(--cyan));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero p.lead{
+    margin-top:22px; font-size:1.15rem; color:var(--muted); max-width:620px;
+  }
+  .btn-row{display:flex; gap:16px; margin-top:38px; flex-wrap:wrap;}
+  .btn{
+    padding:14px 30px; border-radius:10px; font-weight:600; font-size:0.95rem;
+    text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+    transition:transform .2s, box-shadow .2s;
+  }
+  .btn-primary{
+    background:linear-gradient(90deg, var(--indigo), var(--violet));
+    color:#fff; box-shadow:0 8px 24px rgba(109,40,217,0.25);
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 12px 28px rgba(109,40,217,0.35);}
+  .btn-outline{
+    border:1px solid var(--border); color:var(--text);
+  }
+  .btn-outline:hover{border-color:var(--cyan); color:var(--cyan);}
+  .section-tag{
+    color:var(--cyan); font-size:0.82rem; font-weight:700; letter-spacing:2px;
+    text-transform:uppercase; margin-bottom:10px; display:block;
+  }
+  .section-title{font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:700; margin-bottom:14px;}
+  .section-sub{color:var(--muted); max-width:640px; margin-bottom:50px; font-size:1.02rem;}
+  .grid{display:grid; gap:24px;}
+  .grid-3{grid-template-columns:repeat(3,1fr);}
+  .grid-2{grid-template-columns:repeat(2,1fr);}
+  .grid-4{grid-template-columns:repeat(4,1fr);}
+  .card{
+    background:linear-gradient(160deg, var(--surface), var(--surface2));
+    border:1px solid var(--border); border-radius:16px; padding:30px;
+    box-shadow:0 4px 18px rgba(30,20,60,0.06);
+    transition:transform .25s, border-color .25s, box-shadow .25s;
+  }
+  .card:hover{transform:translateY(-6px); border-color:var(--violet); box-shadow:0 14px 30px rgba(109,40,217,0.15);}
+  .icon-badge{
+    width:48px; height:48px; border-radius:12px; display:flex; align-items:center;
+    justify-content:center; font-size:1.4rem; margin-bottom:18px;
+    background:rgba(109,40,217,0.1); border:1px solid var(--border);
+  }
+  .card h3{font-size:1.1rem; margin-bottom:10px;}
+  .card p{color:var(--muted); font-size:0.94rem;}
+  .skill-bar-wrap{margin-bottom:16px;}
+  .skill-label{display:flex; justify-content:space-between; font-size:0.9rem; margin-bottom:6px; color:var(--text);}
+  .skill-track{height:8px; border-radius:6px; background:var(--surface2); overflow:hidden;}
+  .skill-fill{height:100%; border-radius:6px; background:linear-gradient(90deg, var(--cyan), var(--violet));}
+  .tag{
+    display:inline-block; padding:6px 14px; border-radius:20px; font-size:0.82rem;
+    background:rgba(249,115,22,0.1); color:#c2410c; border:1px solid rgba(249,115,22,0.3);
+    margin:4px 6px 0 0;
+  }
+  .project-card{
+    background:linear-gradient(160deg, var(--surface), var(--surface2));
+    border:1px solid var(--border); border-radius:18px; padding:34px; margin-bottom:26px;
+    box-shadow:0 4px 18px rgba(30,20,60,0.06);
+  }
+  .project-header{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:18px;}
+  .project-header h3{font-size:1.35rem;}
+  .badge{
+    font-size:0.75rem; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+    color:#ffffff; background:var(--cyan); padding:5px 12px; border-radius:6px;
+  }
+  .project-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; margin-top:18px;}
+  .project-grid h4{font-size:0.82rem; color:var(--cyan); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;}
+  .project-grid p{color:var(--muted); font-size:0.92rem;}
+  .impact-row{display:flex; gap:28px; margin-top:20px; flex-wrap:wrap;}
+  .impact-stat{font-size:1.5rem; font-weight:700; color:var(--teal);}
+  .impact-stat span{display:block; font-size:0.78rem; color:var(--muted); font-weight:400; margin-top:2px;}
+  .stack-cat{margin-bottom:34px;}
+  .stack-cat h4{font-size:0.9rem; color:var(--cyan); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:14px;}
+  .chips{display:flex; flex-wrap:wrap; gap:10px;}
+  .chip{
+    background:var(--surface2); border:1px solid var(--border); border-radius:10px;
+    padding:10px 16px; font-size:0.9rem; font-weight:500; transition:border-color .2s;
+  }
+  .chip:hover{border-color:var(--violet); box-shadow:0 4px 12px rgba(109,40,217,0.12);}
+  .timeline{position:relative; padding-left:32px; border-left:2px solid var(--border);}
+  .tl-item{position:relative; margin-bottom:38px;}
+  .tl-item::before{
+    content:''; position:absolute; left:-41px; top:4px; width:16px; height:16px;
+    border-radius:50%; background:var(--bg); border:3px solid var(--cyan);
+  }
+  .tl-date{color:var(--cyan); font-size:0.85rem; font-weight:700; letter-spacing:1px; margin-bottom:6px;}
+  .tl-item h3{font-size:1.15rem; margin-bottom:6px;}
+  .tl-item p{color:var(--muted); font-size:0.94rem;}
+  .metrics-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px; margin-bottom:50px;}
+  .metric-card{
+    text-align:center; padding:32px 18px; border-radius:16px;
+    background:linear-gradient(160deg, var(--surface), var(--surface2));
+    border:1px solid var(--border);
+    box-shadow:0 4px 18px rgba(30,20,60,0.06);
+  }
+  .metric-num{font-size:2.3rem; font-weight:700; background:linear-gradient(90deg,var(--cyan),var(--violet)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .metric-label{color:var(--muted); font-size:0.88rem; margin-top:8px;}
+  .testimonial{
+    background:linear-gradient(160deg, var(--surface), var(--surface2));
+    border:1px solid var(--border); border-radius:16px; padding:28px;
+    box-shadow:0 4px 18px rgba(30,20,60,0.06);
+  }
+  .testimonial p{font-style:italic; color:var(--text); font-size:0.98rem; margin-bottom:16px;}
+  .t-author{display:flex; align-items:center; gap:12px;}
+  .avatar{width:42px; height:42px; border-radius:50%; background:linear-gradient(135deg,var(--violet),var(--cyan)); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.9rem; color:#ffffff;}
+  .t-name{font-weight:600; font-size:0.92rem;}
+  .t-role{color:var(--muted); font-size:0.82rem;}
+  .contact-section{
+    text-align:center; padding:100px 8%; background:linear-gradient(160deg, #f5f4ff, #eefcfb);
+    border-radius:24px; margin:0 auto 80px; max-width:1200px; border:1px solid var(--border);
+    box-shadow:0 6px 24px rgba(30,20,60,0.05);
+  }
+  .contact-section h2{font-size:clamp(2rem,4vw,3rem); margin-bottom:16px;}
+  .contact-links{display:flex; justify-content:center; gap:18px; margin-top:36px; flex-wrap:wrap;}
+  footer{text-align:center; padding:30px; color:var(--muted); font-size:0.85rem; border-top:1px solid var(--border);}
+  .note{font-size:0.78rem; color:var(--muted); text-align:center; padding:10px; opacity:0.7;}
+  @media(max-width:900px){
+    .grid-3,.grid-4,.grid-2,.project-grid{grid-template-columns:1fr;}
+    .metrics-grid{grid-template-columns:repeat(2,1fr);}
+    nav ul{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+
+<nav>
+  <div class="logo">Ayesha<span>.ai</span></div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="eyebrow"><span class="dot"></span> AI &amp; Agentic AI Engineer · Mathematics Background</div>
+  <h1 class="hero-title">Combining <span class="gradient-text">mathematical thinking</span>, teaching, and AI engineering to build practical intelligent systems.</h1>
+  <p class="lead">Generative AI · RAG · AI Agents · Automation · Python — an analytical, curious, and ambitious learner transitioning strongly into AI, grounded in logic and a genuine love of explaining how things work.</p>
+  <div class="btn-row">
+    <a href="#projects" class="btn btn-primary">View Projects →</a>
+    <a href="#contact" class="btn btn-outline">Let's Connect</a>
+  </div>
+</section>
+
+<section id="about">
+  <span class="section-tag">About Me</span>
+  <h2 class="section-title">An analytical, curious, and ambitious learner — transitioning strongly into AI</h2>
+  <p class="section-sub">My path into AI didn't start with a computer science degree — it started with mathematics, teaching, and a habit of taking things apart until I understand how they work. That mix now shapes how I build agentic AI systems: rigorously, clearly, and with a bias toward actually shipping something useful.</p>
+  <div class="grid grid-3">
+    <div class="card">
+      <div class="icon-badge">🧠</div>
+      <h3>Strong analytical foundation</h3>
+      <p>A Mathematics background gives me a natural strength in logic, structured thinking, and problem-solving — the backbone of good agent design.</p>
+    </div>
+    <div class="card">
+      <div class="icon-badge">🤖</div>
+      <h3>Growing AI Engineer</h3>
+      <p>Actively developing skills in Generative AI, Agentic AI, RAG, AI automation, Python, and LLM-based applications.</p>
+    </div>
+    <div class="card">
+      <div class="icon-badge">⚙️</div>
+      <h3>Hands-on learner</h3>
+      <p>I don't stop at theory. I regularly build and troubleshoot real workflows with n8n, Zapier, Python, and AI tooling.</p>
+    </div>
+    <div class="card">
+      <div class="icon-badge">🎓</div>
+      <h3>Educator at heart</h3>
+      <p>Teaching experience gives me a real advantage: I know how to explain complicated ideas simply — for users, teams, and stakeholders alike.</p>
+    </div>
+    <div class="card">
+      <div class="icon-badge">🚀</div>
+      <h3>Entrepreneurial mindset</h3>
+      <p>Experience across digital marketing, SEO, branding, and Alpha Teachings means I think beyond pure technical skill — toward impact and audience.</p>
+    </div>
+    <div class="card">
+      <div class="icon-badge">💪</div>
+      <h3>Persistent</h3>
+      <p>When something breaks, I keep asking questions until I understand how to fix it — not just patch it.</p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:34px; border-color:var(--violet); background:linear-gradient(160deg, rgba(124,92,255,0.12), rgba(34,226,214,0.06));">
+    <h3 style="margin-bottom:10px;">My positioning</h3>
+    <p style="color:var(--text); font-size:1.02rem;"><strong>AI &amp; Agentic AI Engineer | Mathematics Background | Generative AI • RAG • AI Agents • Automation • Python</strong></p>
+    <p style="margin-top:10px;">My strongest differentiator: <em>"Combining mathematical thinking, teaching experience, and AI engineering to build practical intelligent systems."</em></p>
+  </div>
+</section>
+
+<section id="skills">
+  <span class="section-tag">Skills & Expertise</span>
+  <h2 class="section-title">Core competencies</h2>
+  <p class="section-sub">A blend of mathematical rigor, hands-on automation, and emerging AI engineering skills — the foundation I'm building on as I grow into the AI &amp; Agentic AI field.</p>
+  <div class="grid grid-2">
+    <div>
+      <div class="skill-bar-wrap">
+        <div class="skill-label"><span>Mathematics & Analytical Problem-Solving</span><span>95%</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-label"><span>Python for AI & Automation</span><span>80%</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-label"><span>Generative AI & LLM-Based Applications</span><span>78%</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:78%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-label"><span>Agentic AI & RAG</span><span>72%</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:72%"></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="skill-bar-wrap">
+        <div class="skill-label"><span>Workflow Automation (n8n & Zapier)</span><span>85%</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-label"><span>Teaching & Explaining Complex Ideas Simply</span><span>92%</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:92%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-label"><span>Digital Marketing, SEO & Branding</span><span>75%</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-label"><span>Persistence & Self-Directed Troubleshooting</span><span>96%</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:96%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <span class="section-tag">Featured Projects</span>
+  <h2 class="section-title">Agentic AI in action</h2>
+  <p class="section-sub">Example projects illustrating end-to-end agentic system design. Names and metrics below are illustrative placeholders.</p>
+
+  <div class="project-card">
+    <div class="project-header">
+      <h3>Autonomous Research Agent <em style="color:var(--muted); font-size:0.85rem;">(example project)</em></h3>
+      <span class="badge">Agentic RAG</span>
+    </div>
+    <div class="project-grid">
+      <div><h4>Problem</h4><p>Analysts spent hours manually gathering and synthesizing information across scattered sources for market research briefs.</p></div>
+      <div><h4>Approach</h4><p>Built a planner-executor agent that decomposes research questions, retrieves from a vector store + live web tools, and self-critiques drafts before final synthesis.</p></div>
+      <div><h4>Impact</h4><p>Cut average brief turnaround from ~6 hours to under 40 minutes with human-in-the-loop review.</p></div>
+    </div>
+    <div class="impact-row">
+      <div class="impact-stat">88%<span>Time saved</span></div>
+      <div class="impact-stat">3.2x<span>Research throughput</span></div>
+      <div class="impact-stat">40 min<span>Avg. turnaround</span></div>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <div class="project-header">
+      <h3>Multi-Agent Customer Support System <em style="color:var(--muted); font-size:0.85rem;">(example project)</em></h3>
+      <span class="badge">Multi-Agent</span>
+    </div>
+    <div class="project-grid">
+      <div><h4>Problem</h4><p>A SaaS support team (example: "Northline SaaS Co.") was bottlenecked triaging, routing, and resolving high ticket volumes.</p></div>
+      <div><h4>Approach</h4><p>Designed a triage agent, a resolution agent with tool access to internal docs/APIs, and an escalation agent — coordinated via a supervisor pattern with shared memory.</p></div>
+      <div><h4>Impact</h4><p>Automated first-response and resolution for the majority of tier-1 tickets, freeing agents for complex cases.</p></div>
+    </div>
+    <div class="impact-row">
+      <div class="impact-stat">62%<span>Tickets auto-resolved</span></div>
+      <div class="impact-stat">-45%<span>Avg. response time</span></div>
+      <div class="impact-stat">4.6/5<span>CSAT score</span></div>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <div class="project-header">
+      <h3>Workflow Automation Agent <em style="color:var(--muted); font-size:0.85rem;">(example project)</em></h3>
+      <span class="badge">Tool-Use Agent</span>
+    </div>
+    <div class="project-grid">
+      <div><h4>Problem</h4><p>Ops teams manually stitched together data entry, approvals, and reporting across five internal tools.</p></div>
+      <div><h4>Approach</h4><p>Built a tool-using agent with structured function-calling, guardrailed approval checkpoints, and audit logging integrated into existing workflow systems.</p></div>
+      <div><h4>Impact</h4><p>Reduced manual ops workload significantly while maintaining full auditability and human sign-off on sensitive actions.</p></div>
+    </div>
+    <div class="impact-row">
+      <div class="impact-stat">70%<span>Manual tasks automated</span></div>
+      <div class="impact-stat">99.3%<span>Task accuracy</span></div>
+      <div class="impact-stat">$180K<span>Est. annual savings</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <span class="section-tag">Tech Stack</span>
+  <h2 class="section-title">Tools I build with</h2>
+  <div class="stack-cat">
+    <h4>LLM Providers</h4>
+    <div class="chips">
+      <div class="chip">OpenAI GPT-4o / o-series</div>
+      <div class="chip">Anthropic Claude</div>
+      <div class="chip">Google Gemini</div>
+      <div class="chip">Meta Llama 3</div>
+      <div class="chip">Mistral</div>
+    </div>
+  </div>
+  <div class="stack-cat">
+    <h4>Agent Frameworks</h4>
+    <div class="chips">
+      <div class="chip">LangChain</div>
+      <div class="chip">LangGraph</div>
+      <div class="chip">AutoGen</div>
+      <div class="chip">CrewAI</div>
+      <div class="chip">Semantic Kernel</div>
+      <div class="chip">n8n</div>
+      <div class="chip">Zapier</div>
+    </div>
+  </div>
+  <div class="stack-cat">
+    <h4>Vector Databases & Retrieval</h4>
+    <div class="chips">
+      <div class="chip">Pinecone</div>
+      <div class="chip">Weaviate</div>
+      <div class="chip">Chroma</div>
+      <div class="chip">FAISS</div>
+      <div class="chip">pgvector</div>
+    </div>
+  </div>
+  <div class="stack-cat">
+    <h4>Cloud & Deployment</h4>
+    <div class="chips">
+      <div class="chip">AWS (Bedrock, Lambda, SageMaker)</div>
+      <div class="chip">Azure AI Foundry</div>
+      <div class="chip">Google Cloud Vertex AI</div>
+      <div class="chip">Docker / Kubernetes</div>
+    </div>
+  </div>
+  <div class="stack-cat">
+    <h4>MLOps & Evaluation</h4>
+    <div class="chips">
+      <div class="chip">LangSmith</div>
+      <div class="chip">Weights & Biases</div>
+      <div class="chip">MLflow</div>
+      <div class="chip">Ragas</div>
+      <div class="chip">FastAPI</div>
+      <div class="chip">SEO & Analytics Tools</div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <span class="section-tag">Experience</span>
+  <h2 class="section-title">Career timeline</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date">Current</div>
+      <h3>AI &amp; Agentic AI Engineer <em style="color:var(--muted); font-size:0.85rem;">(in progress)</em></h3>
+      <p>Building an Agentic AI portfolio — hands-on projects in Generative AI, RAG, and automation using Python, n8n, and Zapier.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Entrepreneurial Ventures</div>
+      <h3>Digital Marketing, SEO &amp; Branding</h3>
+      <p>Explored branding, SEO, and digital marketing — including Alpha Teachings — building an entrepreneurial mindset that looks beyond pure technical skill.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Educator</div>
+      <h3>Teaching Experience</h3>
+      <p>Taught and explained complex ideas simply — a skill that now shapes how I document, communicate, and design AI systems for real users.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Foundation</div>
+      <h3>Mathematics</h3>
+      <p>Built a strong analytical foundation in logic, structured thinking, and problem-solving that underpins everything I build today.</p>
+    </div>
+  </div>
+</section>
+
+<section id="impact">
+  <span class="section-tag">Impact & Testimonials</span>
+  <h2 class="section-title">Results that speak for themselves</h2>
+  <div class="metrics-grid">
+    <div class="metric-card"><div class="metric-num">70%+</div><div class="metric-label">Avg. process automation rate</div></div>
+    <div class="metric-card"><div class="metric-num">3.2x</div><div class="metric-label">Throughput improvement</div></div>
+    <div class="metric-card"><div class="metric-num">$180K</div><div class="metric-label">Annual cost savings (example project)</div></div>
+    <div class="metric-card"><div class="metric-num">99.3%</div><div class="metric-label">Agent task accuracy</div></div>
+  </div>
+  <div class="grid grid-3">
+    <div class="testimonial">
+      <p>"The agentic workflow they built cut our manual review time dramatically — and it's actually reliable in production."</p>
+      <div class="t-author"><div class="avatar">JM</div><div><div class="t-name">Jordan M.</div><div class="t-role">VP Operations, example company</div></div></div>
+    </div>
+    <div class="testimonial">
+      <p>"One of the few AI engineers I've worked with who thinks about failure modes and guardrails, not just demos."</p>
+      <div class="t-author"><div class="avatar">SR</div><div><div class="t-name">Sara R.</div><div class="t-role">Head of Product, example company</div></div></div>
+    </div>
+    <div class="testimonial">
+      <p>"Their multi-agent support system paid for itself within the first quarter."</p>
+      <div class="t-author"><div class="avatar">DK</div><div><div class="t-name">David K.</div><div class="t-role">CTO, example company</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-section">
+    <span class="section-tag">Get In Touch</span>
+    <h2>Let's build something agentic together</h2>
+    <p style="color:var(--muted); max-width:520px; margin:0 auto;">Open to roles, collaborations, and consulting in AI and agentic systems. Reach out below.</p>
+    <div class="contact-links">
+      <a href="mailto:ayeshaaziz58@gmail.com" class="btn btn-primary">Email Me</a>
+      <a href="#" class="btn btn-outline">LinkedIn</a>
+      <a href="#" class="btn btn-outline">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Ayesha Aziz — AI & Agentic AI Portfolio. Built with curiosity and a lot of coffee.
+</footer>
+<p class="note">Note: Project names, company names, and metrics marked as examples are illustrative placeholders — replace with your real work before publishing.</p>
+
+</body>
+</html>
